@@ -1,0 +1,454 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>くるくるの自己紹介</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    
+    :root {
+      --fashion-1: #86A788;
+      --fashion-2: #FFFDEC;
+      --fashion-3: #FFE2E2;
+      --fashion-4: #FFCFCF;
+      --fashion-5: #4C585B;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: var(--fashion-2);
+      color: var(--fashion-5);
+      padding: 16px;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('/api/placeholder/400/320') center/cover no-repeat;
+      opacity: 0.03;
+      z-index: 0;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 4px 0;
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-4));
+      border-radius: 2px;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-5);
+      font-size: 16px;
+      position: relative;
+    }
+    
+    .date::before {
+      content: "📅";
+      margin-right: 4px;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .left-column, .right-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .section {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(5px);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 2px dashed var(--fashion-1);
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--fashion-1);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+    }
+    
+    .section-title::after {
+      content: "";
+      flex-grow: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--fashion-1), transparent);
+      margin-left: 8px;
+    }
+    
+    .profile-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    
+    .profile-label {
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      min-width: 80px;
+      position: relative;
+    }
+    
+    .profile-label::after {
+      content: "→";
+      margin: 0 8px;
+      color: var(--fashion-4);
+    }
+    
+    .profile-value {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: rgba(255, 253, 236, 0.6);
+      padding: 4px 8px;
+      border-radius: 8px;
+      flex-grow: 1;
+      position: relative;
+    }
+    
+    .highlight {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: var(--fashion-3);
+      z-index: -1;
+      border-radius: 4px;
+    }
+    
+    .bear-container {
+      text-align: center;
+      margin: 8px auto;
+    }
+    
+    .bear-character {
+      width: 100%;
+      max-width: 140px;
+      display: inline-block;
+      border-radius: 12px;
+      border: 3px dashed var(--fashion-4);
+      padding: 8px;
+    }
+    
+    .chart-container {
+      width: 100%;
+      height: 230px;
+      margin: 8px 0;
+      position: relative;
+    }
+    
+    .handwritten-note {
+      font-family: 'Yomogi', cursive;
+      transform: rotate(-2deg);
+      background-color: var(--fashion-3);
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      max-width: 90%;
+      margin: 12px auto;
+      position: relative;
+    }
+    
+    .handwritten-note::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      border: 1px dashed var(--fashion-1);
+      border-radius: 6px;
+      z-index: -1;
+    }
+    
+    .handwritten-arrow {
+      position: absolute;
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-1);
+      font-size: 24px;
+    }
+    
+    .connector {
+      position: absolute;
+      border-top: 2px dashed var(--fashion-4);
+      transform-origin: 0 0;
+    }
+    
+    .icon {
+      display: inline-block;
+      margin-right: 4px;
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 16px;
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-5);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .decoration {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    
+    .decoration.dots {
+      background-image: radial-gradient(var(--fashion-4) 2px, transparent 2px);
+      background-size: 20px 20px;
+      width: 120px;
+      height: 120px;
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .left-column, .right-column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="decoration dots" style="top: 50px; right: 30px;"></div>
+    <div class="decoration dots" style="bottom: 80px; left: 40px;"></div>
+    
+    <div class="header">
+      <h1 class="title">✨ くるくるの自己紹介 ✨</h1>
+      <div class="date">2025年3月7日</div>
+    </div>
+    
+    <div class="content">
+      <div class="left-column">
+        <div class="section">
+          <h2 class="section-title">📌 基本プロフィール</h2>
+          
+          <div class="profile-item">
+            <div class="profile-label">名前</div>
+            <div class="profile-value"><span class="highlight">くるくる</span></div>
+          </div>
+          
+          <div class="profile-item">
+            <div class="profile-label">身長</div>
+            <div class="profile-value">148cm 🔍</div>
+          </div>
+          
+          <div class="profile-item">
+            <div class="profile-label">出身</div>
+            <div class="profile-value">大阪 🗾</div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">🧸 好きなキャラクター</h2>
+          
+          <div class="handwritten-note">
+            くまのがっこう ❤️
+          </div>
+          
+          <div class="bear-container">
+            <svg class="bear-character" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- 背景 -->
+              <rect width="200" height="200" fill="#f5e9d5" rx="12" ry="12" />
+              
+              <!-- くまの体 -->
+              <circle cx="100" cy="110" r="60" fill="#986b41" />
+              <ellipse cx="100" cy="140" rx="50" ry="35" fill="#986b41" />
+              
+              <!-- お腹 -->
+              <ellipse cx="100" cy="120" rx="40" ry="35" fill="#d8ac7a" />
+              
+              <!-- 頭 -->
+              <circle cx="100" cy="70" r="40" fill="#986b41" />
+              
+              <!-- 耳 -->
+              <circle cx="65" cy="45" r="15" fill="#986b41" />
+              <circle cx="135" cy="45" r="15" fill="#986b41" />
+              <circle cx="65" cy="45" r="10" fill="#d8ac7a" />
+              <circle cx="135" cy="45" r="10" fill="#d8ac7a" />
+              
+              <!-- 鼻 -->
+              <ellipse cx="100" cy="80" rx="12" ry="8" fill="#523c28" />
+              
+              <!-- 目 -->
+              <circle cx="80" cy="65" r="6" fill="#523c28" />
+              <circle cx="120" cy="65" r="6" fill="#523c28" />
+              <circle cx="83" cy="63" r="2" fill="white" />
+              <circle cx="123" cy="63" r="2" fill="white" />
+              
+              <!-- 口 -->
+              <path d="M95,90 Q100,95 105,90" stroke="#523c28" stroke-width="2" fill="none" />
+              
+              <!-- 腕 -->
+              <ellipse cx="60" cy="110" rx="15" ry="25" fill="#986b41" transform="rotate(-20 60 110)" />
+              <ellipse cx="140" cy="110" rx="15" ry="25" fill="#986b41" transform="rotate(20 140 110)" />
+              
+              <!-- くまのがっこうの制服風 -->
+              <path d="M85,100 L80,150 H120 L115,100" fill="#ff9e9e" stroke="#f27979" stroke-width="2" />
+              <rect x="95" y="100" width="10" height="15" fill="#f5f5f5" stroke="#dddddd" stroke-width="1" />
+              <circle cx="100" cy="107" r="2" fill="#4c585b" />
+              <circle cx="100" cy="115" r="2" fill="#4c585b" />
+              
+              <!-- 足 -->
+              <ellipse cx="80" cy="170" rx="15" ry="10" fill="#986b41" />
+              <ellipse cx="120" cy="170" rx="15" ry="10" fill="#986b41" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="right-column">
+        <div class="section">
+          <h2 class="section-title">🍲 好きな食べ物</h2>
+          
+          <div class="handwritten-note" style="transform: rotate(1deg);">
+            <span class="icon">🔥</span> 辛いものぜんぶ！ <span class="icon">🔥</span><br>
+            <span style="margin-left: 12px;">(とくに、<span class="highlight">麻婆豆腐</span>が好き)</span>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">🐧 最近ハマってること</h2>
+          
+          <div class="handwritten-note" style="transform: rotate(-1deg); background-color: var(--fashion-4);">
+            いろんな水族館を回ること！<br>
+            <span style="display: block; text-align: right; margin-top: 4px;">
+              ペンギンさんかわいい♡
+            </span>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">📈 くるくる基本図（身長の推移）</h2>
+          
+          <svg class="chart-container" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- Y軸 -->
+            <line x1="50" y1="20" x2="50" y2="200" stroke="#4C585B" stroke-width="2" stroke-dasharray="4" />
+            <text x="10" y="200" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">40cm</text>
+            <text x="10" y="160" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">80cm</text>
+            <text x="5" y="120" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">120cm</text>
+            <text x="5" y="80" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">160cm</text>
+            <text x="5" y="40" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">200cm</text>
+            
+            <!-- X軸 -->
+            <line x1="50" y1="200" x2="380" y2="200" stroke="#4C585B" stroke-width="2" stroke-dasharray="4" />
+            <text x="50" y="215" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">0歳</text>
+            <text x="105" y="215" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">10歳</text>
+            <text x="165" y="215" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">15歳</text>
+            <text x="225" y="215" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">18歳</text>
+            <text x="285" y="215" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">45歳</text>
+            <text x="345" y="215" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B">100歳</text>
+            
+            <!-- データポイント -->
+            <!-- 身長：40cm, 105cm, 146cm, 148cm, 145cm, 130cm -->
+            <circle cx="50" cy="180" r="4" fill="#FFCFCF" />
+            <circle cx="110" cy="115" r="4" fill="#FFCFCF" />
+            <circle cx="170" cy="74" r="4" fill="#FFCFCF" />
+            <circle cx="230" cy="72" r="4" fill="#FFCFCF" />
+            <circle cx="290" cy="75" r="4" fill="#FFCFCF" />
+            <circle cx="350" cy="90" r="4" fill="#FFCFCF" />
+            
+            <!-- 折れ線 -->
+            <polyline points="50,180 110,115 170,74 230,72 290,75 350,90" fill="none" stroke="#86A788" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            
+            <!-- データラベル (より小さく) -->
+            <text x="42" y="170" font-family="'Yomogi', cursive" font-size="10" fill="#4C585B">40cm</text>
+            <text x="102" y="105" font-family="'Yomogi', cursive" font-size="10" fill="#4C585B">105cm</text>
+            <text x="162" y="64" font-family="'Yomogi', cursive" font-size="10" fill="#4C585B">146cm</text>
+            <text x="222" y="62" font-family="'Yomogi', cursive" font-size="10" fill="#4C585B">148cm</text>
+            <text x="282" y="65" font-family="'Yomogi', cursive" font-size="10" fill="#4C585B">145cm</text>
+            <text x="342" y="80" font-family="'Yomogi', cursive" font-size="10" fill="#4C585B">130cm</text>
+            
+            <!-- 強調部分 -->
+            <circle cx="230" cy="72" r="6" stroke="#FFE2E2" stroke-width="2" fill="none" />
+            <text x="210" y="52" font-family="'Yomogi', cursive" font-size="12" fill="#4C585B" transform="rotate(-5, 210, 52)">今ここ！</text>
+            <path d="M215,57 Q220,65 225,70" fill="none" stroke="#FFCFCF" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      ✏️ くるくるの自己紹介 - グラフィックレコーディング風 ✏️
+    </div>
+  </div>
+</body>
+</html>
